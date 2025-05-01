@@ -3,10 +3,12 @@ package sh.jfm.springbootdemos.aiagent;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ChatController {
+    private static final String DEFAULT_PROMPT = "What day is tomorrow?";
 
     private final ChatModel chatModel;
 
@@ -14,10 +16,23 @@ public class ChatController {
         this.chatModel = chatModel;
     }
 
+
+    /// Endpoint to process date/time related queries using AI chat model.
+    ///
+    /// Example curl command:
+    /// ```
+    /// curl -X POST http://localhost:8080/agents/datetime \
+    /// -H "Content-Type: text/plain" \
+    /// -d "What is the current time in UTC?"
+    ///```
+    ///
+    /// @param prompt The text prompt to process. If not provided, uses default prompt "What day is tomorrow?"
+    /// @return The AI-generated response addressing the date/time query
     @PostMapping("/agents/datetime")
-    public String datetime() {
+    public String datetime(@RequestBody(required = false) String prompt) {
+        String finalPrompt = (prompt == null || prompt.trim().isEmpty()) ? DEFAULT_PROMPT : prompt;
         return ChatClient.create(chatModel)
-                .prompt("What day is tomorrow?")
+                .prompt(finalPrompt)
                 .tools(new DateTimeTools())
                 .call()
                 .content();
