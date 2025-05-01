@@ -16,7 +16,6 @@ public class ChatController {
         this.chatModel = chatModel;
     }
 
-
     /// Endpoint to process date/time related queries using AI chat model.
     ///
     /// Example curl command:
