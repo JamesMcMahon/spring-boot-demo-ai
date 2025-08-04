@@ -16,6 +16,10 @@ public class ChatController {
         this.chatModel = chatModel;
     }
 
+    private static String useDefaultForNullOrEmpty(String prompt) {
+        return (prompt == null || prompt.trim().isEmpty()) ? DEFAULT_PROMPT : prompt;
+    }
+
     /// Endpoint to process date/time related queries using AI chat model.
     ///
     /// Example curl command:
@@ -29,9 +33,8 @@ public class ChatController {
     /// @return The AI-generated response addressing the date/time query
     @PostMapping("/agents/datetime")
     public String datetime(@RequestBody(required = false) String prompt) {
-        String finalPrompt = (prompt == null || prompt.trim().isEmpty()) ? DEFAULT_PROMPT : prompt;
         return ChatClient.create(chatModel)
-                .prompt(finalPrompt)
+                .prompt(useDefaultForNullOrEmpty(prompt))
                 .tools(new DateTimeTools())
                 .call()
                 .content();
