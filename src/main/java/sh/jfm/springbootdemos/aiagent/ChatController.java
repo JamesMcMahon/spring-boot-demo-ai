@@ -24,7 +24,7 @@ public class ChatController {
     ///
     /// Example curl command:
     /// ```
-    /// curl -X POST http://localhost:8080/agents/datetime \
+    /// curl -X POST http://localhost:8080/datetime \
     /// -H "Content-Type: text/plain" \
     /// -d "What is the current time in UTC?"
     ///```
