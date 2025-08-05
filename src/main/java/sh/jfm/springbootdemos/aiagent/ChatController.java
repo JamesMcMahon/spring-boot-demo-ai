@@ -2,6 +2,7 @@ package sh.jfm.springbootdemos.aiagent;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,5 +39,15 @@ public class ChatController {
                 .tools(new DateTimeTools())
                 .call()
                 .content();
+    }
+
+    /// Same as /datetime endpoint, but returns a ChatResponse object instead of a String.
+    @PostMapping("datetime-full")
+    public ChatResponse datetimeFull(@RequestBody(required = false) String prompt) {
+        return ChatClient.create(chatModel)
+                .prompt(useDefaultForNullOrEmpty(prompt))
+                .tools(new DateTimeTools())
+                .call()
+                .chatResponse();
     }
 }
