@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sh.jfm.springbootdemos</groupId>
-	<artifactId>aiagent</artifactId>
+    <artifactId>aidemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>aiagent</name>
-	<description>AI Agent sample for Spring AI</description>
+    <name>aidemo</name>
+    <description>Spring Boot AI Demo</description>
 	<url/>
 	<licenses>
 		<license/>

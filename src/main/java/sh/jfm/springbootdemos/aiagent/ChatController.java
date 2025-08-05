@@ -31,7 +31,7 @@ public class ChatController {
     ///
     /// @param prompt The text prompt to process. If not provided, uses default prompt "What day is tomorrow?"
     /// @return The AI-generated response addressing the date/time query
-    @PostMapping("/agents/datetime")
+    @PostMapping("datetime")
     public String datetime(@RequestBody(required = false) String prompt) {
         return ChatClient.create(chatModel)
                 .prompt(useDefaultForNullOrEmpty(prompt))
