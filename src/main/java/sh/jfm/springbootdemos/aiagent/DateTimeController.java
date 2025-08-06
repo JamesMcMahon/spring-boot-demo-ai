@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/// Simple example of using Spring AI with tools taken
+/// Adapted from https://docs.spring.io/spring-ai/reference/api/tools.html
 @RestController
 public class DateTimeController {
     private static final String DEFAULT_PROMPT = "What day is tomorrow?";
