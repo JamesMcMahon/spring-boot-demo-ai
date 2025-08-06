@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class DateTimeController {
     private static final String DEFAULT_PROMPT = "What day is tomorrow?";
 
-    private final ChatModel chatModel;
+    private final ChatClient chatClient;
 
     public DateTimeController(ChatModel chatModel) {
-        this.chatModel = chatModel;
+        this.chatClient = ChatClient.create(chatModel);
     }
 
     private static String useDefaultForNullOrEmpty(String prompt) {
@@ -34,7 +34,7 @@ public class DateTimeController {
     /// @return The AI-generated response addressing the date/time query
     @PostMapping("datetime")
     public String datetime(@RequestBody(required = false) String prompt) {
-        return ChatClient.create(chatModel)
+        return chatClient
                 .prompt(useDefaultForNullOrEmpty(prompt))
                 .tools(new DateTimeTools())
                 .call()
@@ -44,7 +44,7 @@ public class DateTimeController {
     /// Same as /datetime endpoint, but returns a ChatResponse object instead of a String.
     @PostMapping("datetime-full")
     public ChatResponse datetimeFull(@RequestBody(required = false) String prompt) {
-        return ChatClient.create(chatModel)
+        return chatClient
                 .prompt(useDefaultForNullOrEmpty(prompt))
                 .tools(new DateTimeTools())
                 .call()
