@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class DateTimeController {
     private static final String DEFAULT_PROMPT = "What day is tomorrow?";
 
+    private static String useDefaultForNullOrEmpty(String prompt) {
+        return (prompt == null || prompt.trim().isEmpty()) ? DEFAULT_PROMPT : prompt;
+    }
+
     private final ChatClient chatClient;
 
     public DateTimeController(ChatModel chatModel) {
         this.chatClient = ChatClient.create(chatModel);
-    }
-
-    private static String useDefaultForNullOrEmpty(String prompt) {
-        return (prompt == null || prompt.trim().isEmpty()) ? DEFAULT_PROMPT : prompt;
     }
 
     /// Endpoint to process date/time related queries using AI chat model.
@@ -34,20 +34,19 @@ public class DateTimeController {
     /// @return The AI-generated response addressing the date/time query
     @PostMapping("datetime")
     public String datetime(@RequestBody(required = false) String prompt) {
-        return chatClient
-                .prompt(useDefaultForNullOrEmpty(prompt))
-                .tools(new DateTimeTools())
-                .call()
-                .content();
+        return callDateTimePrompt(prompt).content();
     }
 
     /// Same as /datetime endpoint, but returns a ChatResponse object instead of a String.
     @PostMapping("datetime-full")
     public ChatResponse datetimeFull(@RequestBody(required = false) String prompt) {
+        return callDateTimePrompt(prompt).chatResponse();
+    }
+
+    private ChatClient.CallResponseSpec callDateTimePrompt(String prompt) {
         return chatClient
                 .prompt(useDefaultForNullOrEmpty(prompt))
                 .tools(new DateTimeTools())
-                .call()
-                .chatResponse();
+                .call();
     }
 }
