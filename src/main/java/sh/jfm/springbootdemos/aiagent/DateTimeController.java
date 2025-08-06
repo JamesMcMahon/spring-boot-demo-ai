@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ChatController {
+public class DateTimeController {
     private static final String DEFAULT_PROMPT = "What day is tomorrow?";
 
     private final ChatModel chatModel;
 
-    public ChatController(ChatModel chatModel) {
+    public DateTimeController(ChatModel chatModel) {
         this.chatModel = chatModel;
     }
 
