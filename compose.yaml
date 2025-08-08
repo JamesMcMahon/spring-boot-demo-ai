@@ -3,12 +3,14 @@ services:
     image: ghcr.io/postgresml/postgresml:2.10.0
     environment:
       - POSTGRES_DB=cats
-      - POSTGRES_USER=adaptionuser
-      - POSTGRES_PASSWORD=insecurepassword
+      - POSTGRES_USER=postgresml
     ports:
       - "5432:5432"
+      - "8000:8000"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-custom/init.sql
+    command: bash -c "service postgresql start && sudo -u postgres psql -f /docker-entrypoint-custom/init.sql && tail -f /dev/null"
 
 volumes:
   postgres_data:
