@@ -1,9 +1,6 @@
 services:
   postgres:
-    build:
-      context: .
-      dockerfile: Dockerfile.pgml
-    image: cats-postgres-pgml:latest
+    image: ghcr.io/postgresml/postgresml:2.10.0
     environment:
       - POSTGRES_DB=cats
       - POSTGRES_USER=adaptionuser
