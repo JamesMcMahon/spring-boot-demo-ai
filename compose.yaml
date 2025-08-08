@@ -1,6 +1,9 @@
 services:
   postgres:
-    image: pgvector/pgvector:pg17
+    build:
+      context: .
+      dockerfile: Dockerfile.pgml
+    image: cats-postgres-pgml:latest
     environment:
       - POSTGRES_DB=cats
       - POSTGRES_USER=adaptionuser
