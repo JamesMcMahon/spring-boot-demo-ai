@@ -1,4 +1,4 @@
-package sh.jfm.springbootdemos.aiagent;
+package sh.jfm.springbootdemos.aiagent.adoption;
 
 import org.springframework.data.repository.ListCrudRepository;
 

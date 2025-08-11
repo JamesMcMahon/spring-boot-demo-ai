@@ -1,4 +1,4 @@
-package sh.jfm.springbootdemos.aiagent;
+package sh.jfm.springbootdemos.aiagent.datetime;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;

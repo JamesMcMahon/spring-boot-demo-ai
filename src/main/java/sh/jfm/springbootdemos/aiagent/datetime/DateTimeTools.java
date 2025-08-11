@@ -1,9 +1,9 @@
-package sh.jfm.springbootdemos.aiagent;
+package sh.jfm.springbootdemos.aiagent.datetime;
 
-import org.springframework.ai.tool.annotation.Tool;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
