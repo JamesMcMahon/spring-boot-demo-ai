@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+/// JDBC Chat Memory - so the AI assistant can remember recent chat history
 @Configuration
 public class ChatMemoryConfig {
     private static MessageWindowChatMemory buildMessageWindowChatMemory(ChatMemoryRepository chatMemoryRepository) {

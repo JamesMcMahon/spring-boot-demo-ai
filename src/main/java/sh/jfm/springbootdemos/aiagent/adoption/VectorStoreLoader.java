@@ -9,6 +9,10 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 
 import java.util.List;
 
+/// Simple example of Retrieval Augmented Generation (R.A.G.). Cats are loaded into the vector store so the model
+/// can suggest the right cats to adopt.
+///
+/// Loads data from the database into the vector store.
 @Configuration
 public class VectorStoreLoader {
     public final Logger log = LoggerFactory.getLogger(getClass());

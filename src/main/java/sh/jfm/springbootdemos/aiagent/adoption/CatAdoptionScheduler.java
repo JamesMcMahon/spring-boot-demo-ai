@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+/// Simple tool example - fakes scheduling an appointment to adopt a cat
+/// For a real application appointments would be persisted
 @Component
 class CatAdoptionScheduler {
     private final Logger log = LoggerFactory.getLogger(CatAdoptionScheduler.class);
