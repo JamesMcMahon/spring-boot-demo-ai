@@ -32,8 +32,13 @@ public class AdoptionsController {
                 Information about the cats available will be presented below. If there is no information, then return a polite response suggesting we don't have any cats available.
                 """;
         this.chatClient = builder
+                // tools allow you to add custom functionality to the assistant
                 .defaultTools(catAdoptionScheduler)
+                // as mentioned above, the system prompt is used to keep conversations on track
                 .defaultSystem(systemPrompt)
+                // the two advisors below are used to enhance the assistant's responses:
+                // - the PromptChatMemoryAdvisor is used to store and recall previous conversations
+                // - the QuestionAnswerAdvisor is used to give the model access to the vector store with the cat information in it
                 .defaultAdvisors(
                         promptChatMemoryAdvisor,
                         new QuestionAnswerAdvisor(vectorStore)
@@ -57,6 +62,8 @@ public class AdoptionsController {
         return chatClient
                 .prompt()
                 .user(question)
+                // this advisor associates the conversation with the user so that the PromptChatMemoryAdvisor
+                // can recall previous conversations
                 .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, user))
                 .call()
                 .content();
