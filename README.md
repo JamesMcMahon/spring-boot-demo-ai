@@ -11,7 +11,7 @@ The repository has two independent examples built with Spring Boot:
 
 ## Prerequisites
 
-* JDK 21+
+* JDK 23+
 * Docker & Docker Compose
 * OpenAI API key exported as `SPRING_AI_OPENAI_API_KEY`. *You could potentially set up another API by supplying another
   key and changing the model starter in `pom.xml`.*
