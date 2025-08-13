@@ -22,10 +22,12 @@ public class VectorStoreLoader {
             CatRepository repository,
             VectorStore vectorStore
     ) {
-        if (isVectorStoreEmpty(db)) {
-            log.info("Initializing vector store with data from database");
-            addCatsToVector(repository, vectorStore);
+        if (!isVectorStoreEmpty(db)) {
+            return;
         }
+
+        log.info("Initializing vector store with data from database");
+        addCatsToVectorStore(repository, vectorStore);
     }
 
     private static boolean isVectorStoreEmpty(JdbcClient db) {
@@ -35,7 +37,7 @@ public class VectorStoreLoader {
                        .single() == 0;
     }
 
-    private static void addCatsToVector(CatRepository repository, VectorStore vectorStore) {
+    private static void addCatsToVectorStore(CatRepository repository, VectorStore vectorStore) {
         repository.findAll().forEach(cat -> vectorStore.add(
                 List.of(
                         new Document("id: %s, name: %s, description: %s".formatted(
