@@ -59,3 +59,17 @@ curl "http://localhost:8080/alice/assistant?question=Great%21%20Can%20I%20schedu
 ```bash
 xh get "http://localhost:8080/alice/assistant" question=="Great! Can I schedule to pick up Luna tomorrow?"
 ```
+
+## Credit where credit is due
+
+The majority of this code is adapted
+from [Your First Spring AI 1.0 Application blog post](https://spring.io/blog/2025/05/20/your-first-spring-ai-1).
+
+Josh Long has his own version of this code and various talks on the "Dog Adoption" use case.
+
+- https://github.com/joshlong-attic/2025-05-13-goto-state-of-the-art-series/
+- https://www.youtube.com/watch?v=9mOuvrZtLbc
+
+What this repo adds, aside from changing dogs to cats, is another simple tool example, comments around the code, and a
+full working Docker setup so you can easily boot and run the example code locally. The code is mostly a from-scratch
+re-implementation of the blog post. Some structural changes were made to make it easier to follow.
