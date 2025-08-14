@@ -7,16 +7,12 @@ The repository has two independent examples built with Spring Boot:
 | **Date/Time Tools**     | Simple local tool calling                                                               | `datetime` |                                                                                                                                 |
 | **Cat Adoption Agency** | • Chat memory<br>• RAG with pgvector / PostgresML<br>• Tool calling<br>• System Prompts | `adoption` | Adapted from the blog post  “[Your First Spring AI 1.0 Application](https://spring.io/blog/2025/05/20/your-first-spring-ai-1)”. |
 
----
-
 ## Prerequisites
 
 * JDK 23+
 * Docker & Docker Compose
 * OpenAI API key exported as `SPRING_AI_OPENAI_API_KEY`. *You could potentially set up another API by supplying another
   key and changing the model starter in `pom.xml`.*
-
----
 
 ## Running locally
 
@@ -28,8 +24,6 @@ Simply run:
 ```bash
 ./mvnw spring-boot:run
 ```
-
----
 
 ## Try it out
 
