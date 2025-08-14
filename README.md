@@ -60,6 +60,15 @@ curl "http://localhost:8080/alice/assistant?question=Great%21%20Can%20I%20schedu
 xh get "http://localhost:8080/alice/assistant" question=="Great! Can I schedule to pick up Luna tomorrow?"
 ```
 
+## Branches
+
+* `main` - The main demo, fully working.
+* `experiment-git` - Some experiments with using Git local tools. Ultimately, I felt this was too focused on local tools
+and was not a good demo for the full feature set of Spring AI.
+* `experiment-mcp` - Attempt to simply demo Spring AI's MCP capabilities. Unfortunately, as expected, it's not
+possible to run an MCP server and client in a single application. This branch was abandoned as I did not want to
+further complicate the demo by splitting it into multiple applications.
+
 ## Credit where credit is due
 
 The majority of this code is adapted
