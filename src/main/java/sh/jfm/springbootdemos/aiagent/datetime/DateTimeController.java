@@ -36,19 +36,21 @@ public class DateTimeController {
     /// @return The AI-generated response addressing the date/time query
     @PostMapping("datetime")
     public String datetime(@RequestBody(required = false) String prompt) {
-        return callDateTimePrompt(prompt).content();
+        return chatClient
+                .prompt(useDefaultForNullOrEmpty(prompt))
+                .tools(new DateTimeTools())
+                .call()
+                .content();
     }
 
     /// Same as /datetime endpoint, but returns a ChatResponse object instead of a String.
     @PostMapping("datetime-full")
     public ChatResponse datetimeFull(@RequestBody(required = false) String prompt) {
-        return callDateTimePrompt(prompt).chatResponse();
-    }
-
-    private ChatClient.CallResponseSpec callDateTimePrompt(String prompt) {
         return chatClient
                 .prompt(useDefaultForNullOrEmpty(prompt))
                 .tools(new DateTimeTools())
-                .call();
+                .call()
+                .chatResponse();
     }
+
 }
